@@ -30,3 +30,7 @@ function wp_shutup_handle() {
 add_filter( 'pre_site_transient_update_core', 'wp_shutup_handle' );
 add_filter( 'pre_site_transient_update_plugins', 'wp_shutup_handle' );
 add_filter( 'pre_site_transient_update_themes', 'wp_shutup_handle' );
+
+add_action( 'admin_enqueue_scripts', function ( $hook ) {
+	wp_enqueue_style( 'wp-shutup-style', plugin_dir_url( __FILE__ ) . 'assets/css/style.css', array(), null );
+}, 99 );
